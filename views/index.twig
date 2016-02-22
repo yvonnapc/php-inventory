@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Inventory</title>
+</head>
+<body>
+    <h1>Welcome to your Inventory!</h1>
+
+    <form action='/cars' method='post'>
+      <label for='make'>Make</label>
+      <input id='make' name='make' type='text'>
+
+      <label for='year'>year</label>
+      <input id='year' name='year' type='number'>
+
+      <label for='color'>color</label>
+      <input id='color' name='color' type='text'>
+
+        <button type='submit'>Add Car</button>
+    </form>
+
+      {% if cars is not empty %}
+    <p>Here are all your cars:</p>
+    <ul>
+      {% for car in cars %}
+          <li>{{ car.getMake }}</li>
+          <li>{{ car.getYear }}</li>
+          <li>{{ car.getColor }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form action='/delete' method='post'>
+      <button type='submit'>Clear</button>
+  </form>
+</body>
+</html>
