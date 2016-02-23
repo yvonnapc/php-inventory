@@ -68,15 +68,18 @@
   }
   static function find($search_id)
  {
-    $found_car = null;
+    $searched_cars = array();
+    // $found_car = null;
     $cars = Cars::getAll();
     foreach($cars as $car) {
-        $car_id = $car->getId();
-        if ($car_id == $search_id) {
+        $car_make = $car->getMake();
+        if ($car_make == $search_id) {
           $found_car = $car;
+          array_push($searched_cars, $car);
         }
-    }
-    return $found_car;
+    }  
+
+    return $searched_cars;
  }
 
 }

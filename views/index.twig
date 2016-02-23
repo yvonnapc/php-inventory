@@ -9,10 +9,10 @@
       <label for='make'>Make</label>
       <input id='make' name='make' type='text'>
 
-      <label for='year'>year</label>
+      <label for='year'>Year</label>
       <input id='year' name='year' type='number'>
 
-      <label for='color'>color</label>
+      <label for='color'>Color</label>
       <input id='color' name='color' type='text'>
 
         <button type='submit'>Add Car</button>
@@ -32,5 +32,21 @@
   <form action='/delete' method='post'>
       <button type='submit'>Clear</button>
   </form>
+  <h2>Search inventory by make</h2>
+  <form action='/find' method='get'>
+    <label for='make'>Make</label>
+    <input id='make' name='make' type='text'>
+      <button type='submit'>Search</button>
+  </form>
+      {% if results is not empty %}
+    <p>Here are all your cars:</p>
+    <ul>
+      {% for result in results %}
+          <li>{{ result.getMake }}</li>
+          <li>{{ result.getYear }}</li>
+          <li>{{ result.getColor }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 </body>
 </html>

@@ -30,6 +30,13 @@
     Cars::deleteAll();
     return $app['twig']->render('index.twig');
     });
+
+    $app->get("/find", function() use ($app) {
+      $search_result = Cars::find($_GET['make']);
+
+      return $app['twig']->render('index.twig', array('results' => $search_result));
+
+    });
     return $app;
 
 
